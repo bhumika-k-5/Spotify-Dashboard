@@ -6,10 +6,12 @@ Analysis of trends with respect to audio features in the music industry
 Step 1 – Remove Duplicates
 Selected the entire dataset (Ctrl + A).
 Navigated to Data tab → Remove Duplicates under Data Tools.
+
 Step 2 – Handling Missing Value
 Selected dataset (Ctrl + A).
 Used Home tab → Find & Select → Go To Special → Blanks to check for null values.
 Confirmed no missing values were present.
+
 Step 3 – Formatting
 Column renaming via Data tab → Get & Transform Data → From Table/Range.
 Changed danceability, energy, speechiness, acousticness, instrumentalness, valence to Percentage data type.
@@ -18,49 +20,45 @@ Applied Capitalize Each Word transformation to genre and subgenre columns.
 Added a conditional column for "Mode"
 If value = 1 → "Major"
 Else → "Minor".
+
 Step 4 – Handling Errors
 Opened the query in Data tab → Queries & Connections → Edit.
 Selected all columns (Ctrl + A) in Power Query.
 Used Remove Rows → Remove Errors to delete rows with invalid data.
+
 Step 5 – Extracting Year
 Duplicated the release_date column.
 Used Split Column → By Delimiter to separate year, month, day.
 Removed month/day columns, retaining only the year column for analysis.
 
-Final Output:
-Prepared Raw Data, Cleaned Data, and an Excel-based report for reference.
-
 ## 2. Data Visualization in Excel
 Step 1 – Slicer for Genre Filtering
 Added a slicer for the Genre column to allow users to filter all visuals simultaneously.
 Connected the slicer to all pivot charts to make the dashboard dynamic
+
 Step 2 – Popularity by Year
 Created a column chart using Year (from release date) on the X-axis and the Sum of Popularity on the Y-axis.
 Sorted years in ascending order to observe trends over time.
+
 Step 3 – Popularity by Subgenre
 Used a horizontal bar chart to display the Sum of Popularity for each Subgenre.
 Sorted subgenres in descending order of popularity for quick comparison.
+
 Step 4 – Number of Tracks by Genre
 Created a column chart showing the Count of Tracks grouped by Genre.
 Used data labels for exact track counts.
+
 Step 5 – Energy & Danceability by Genre
 Designed a combo chart with:
 Column bars for average energy.
 Line plot for average danceability.
 Added secondary axis for danceability (percentage format) for better comparison.
+
 Step 6 – Formatting & Layout
 Applied consistent color themes for genres in all charts.
 Adjusted axis titles, labels, and legends for readability.
 Arranged charts in a grid layout for quick visual interpretation.
 Added a green header bar with the dashboard title for a professional look.
-
-Final Output:
-An interactive Spotify Tracks Dashboard that allows filtering by genre and visualizes:
-Popularity trends over years.
-Popularity ranking by subgenre.
-Track counts by genre.
-Energy vs. danceability comparison per genre.
-
 
 # Using PowerBI
 
@@ -99,10 +97,18 @@ Genre
 Year
 Audio Features (e.g., danceability range, energy level).
 
-Key Insights
-Identified the most prominent subgenres with the highest song count.
-Compared average attribute scores (e.g., energy vs. danceability) across the dataset.
-Found that mode plays a role in popularity distribution trends.
-Observed changes in musical characteristics over different release years.
+# Using SQL
 
+## Data Cleaning
+Created spotify_cleaned table from spotify_songs by removing duplicates.
+Formatted Release_Date to full date format and renamed columns with clear names & correct data types.
+Checked for missing values in key columns.
+Added ModeType (Major/Minor) and Release_Year columns.
 
+## Data Analysis
+Ran analysis queries:
+Top 10 most popular songs.
+Average popularity by genre.
+Average danceability and energy by genre.
+Most popular release year.
+Mode type distribution.
